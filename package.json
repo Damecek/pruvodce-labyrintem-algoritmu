@@ -1,6 +1,7 @@
 {
   "name": "pruvodce-labyrintem-algoritmu",
   "version": "1.0.0",
+  "type": "module",
   "dependencies": {
   }
 }

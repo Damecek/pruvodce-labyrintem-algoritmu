@@ -1,5 +1,7 @@
 // na vstupu je text z pismen a mezer. vrat nejdelsi usek textu kde se pismena neopakuji
 // assign to array input, list of lowercase letters and spaces, length 20
+import getStringPrependedBySpaces from "../helper/getStringPrependedBySpaces.js";
+
 let input = Array.from({length: 100}, () => String.fromCharCode(Math.floor(Math.random() * 26) + 97));
 // let input = 'asdafg'.split('');
 
@@ -21,6 +23,4 @@ function getLongestSectionWithoutRepetition(input) {
 }
 
 console.log(input.join(''));
-const section = getLongestSectionWithoutRepetition(input)
-const emptySpaceLength = input.join('').split(section)[0].length;
-console.log(new Array(emptySpaceLength).fill(' ').join('') + section);
+console.log(getStringPrependedBySpaces(input, getLongestSectionWithoutRepetition(input)));
