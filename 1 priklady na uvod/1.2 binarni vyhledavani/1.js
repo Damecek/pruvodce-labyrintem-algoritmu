@@ -18,7 +18,7 @@ function binSearch(input, item) {
                 }
                 i++;
             }
-            return result;
+            return result.sort();
         } else if (input[m] > item) {
             r = m - 1;
         } else {
