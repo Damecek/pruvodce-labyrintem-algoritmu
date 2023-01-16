@@ -18,4 +18,4 @@ function localMinBinSearch(input) {
 }
 
 console.log(input);
-console.log(localMinBinSearch(input, 0));
+console.log(localMinBinSearch(input));
