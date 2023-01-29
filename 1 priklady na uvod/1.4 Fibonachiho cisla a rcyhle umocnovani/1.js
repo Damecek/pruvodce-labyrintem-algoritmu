@@ -1,9 +1,5 @@
 // for example 2^10 = 1024 and 10 in binary is 1010
-// for digit = 1 result = 1 * 1 * 2
-// for digit = 0 result = 2 * 2 * 1
-// for digit = 1 result = 4 * 4 * 2
-// for digit = 0 result = 32 * 32 * 1
-// that means that if the digit in binary is 1 we multiply the result by x otherwise we multiply by 1
+// that means that 10 = 2^3 + 2^1 = 8 + 2 = (1 + 4) + (1 + 4) = ...
 
 function power(x, n) {
     const nBinary = n.toString(2);
