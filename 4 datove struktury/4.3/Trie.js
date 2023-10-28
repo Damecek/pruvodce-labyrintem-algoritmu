@@ -44,12 +44,30 @@ export class Trie {
             return node;
         }
         const char = key.shift();
+        if (!node.children[char]) {
+            return node;
+        }
         const child = this._remove(node.children[char], key);
-        if (!child) return node;
-        if (Object.keys(child.children).length === 0 && !child.isMember) {
+        if (!child || (Object.keys(child.children).length === 0 && !child.isMember)) {
             delete node.children[char];
         }
-        return child;
+        if (Object.keys(node.children).length === 0 && !node.isMember) {
+            return null;
+        }
+        return node;
+    }
+
+
+    removeMin() {
+        let node = this.root;
+        let key = '';
+        while (Object.keys(node.children).length > 0) {
+            const char = Object.keys(node.children).sort()[0];
+            key += char;
+            node = node.children[char];
+        }
+        this.remove(key);
+        return key;
     }
 
     print() {
@@ -66,6 +84,10 @@ export class Trie {
             this._print(node.children[char], prefix + char);
         });
     }
+    
+    isEmpty() {
+        return Object.keys(this.root.children).length === 0;
+    }
 }
 
 
@@ -75,14 +97,3 @@ class TrieNode {
     /** @type {Object<string, TrieNode>} */
     children = {};
 }
-
-const trie = new Trie();
-trie.insert('hello');
-trie.insert('hell');
-trie.insert('hella');
-trie.print();
-console.log(trie.isMember('hello'));
-trie.remove('hell');
-trie.print();
-trie.remove('hello');
-trie.print();
